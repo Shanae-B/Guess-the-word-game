@@ -1,17 +1,21 @@
 //Global Variables
 const guessedLetters = document.querySelector(".guessed-letters");
-const guessButton = document.querySelector(".guess button");
-const text = document.querySelector.Selector(".text input");
+const guessButton = document.querySelector(".guess");
+const textInput = document.querySelector.Selector(".letter");
 const mysteryWord = document.querySelector(".word-in-progress");
-const remaining = document.querySelector (".remaining");
-const guesses = document.querySelector("span");
+const remainingGuesses = document.querySelector (".remaining");
+const guessesSpan = document.querySelector(".remaining span");
 //console.log(guesses)
 const message = document.querySelector(".message");
-const hiddenButton = document.querySelector(".play-again hide");
+const hiddenButton = document.querySelector(".play-again");
 const word = "magnolia"; 
 
 //Placeholders for each letter
-const placeHolder = function(){
-    mysteryWord.innerText = "●"};
-
-placeHolder.join(word);
+const placeHolder = function(word){
+    const placeHolderLetters = [];
+    for (const letter of word) {
+        console.log(letter);
+        placeHolderLetters.push("●");
+    }
+    mysteryWord.innerText = placeHolderLtters.join("");
+};
