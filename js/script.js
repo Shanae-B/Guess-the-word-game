@@ -9,3 +9,9 @@ const guesses = document.querySelector("span");
 const message = document.querySelector(".message");
 const hiddenButton = document.querySelector(".play-again hide");
 const word = "magnolia"; 
+
+//Placeholders for each letter
+const placeHolder = function(){
+    mysteryWord.innerText = "●"};
+
+placeHolder.join(word);
