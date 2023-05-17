@@ -5,7 +5,7 @@ const textInput = document.querySelector(".letter");
 const mysteryWord = document.querySelector(".word-in-progress");
 const remainingGuesses = document.querySelector (".remaining");
 const guessesSpan = document.querySelector(".remaining span");
-//console.log(guesses)
+
 const message = document.querySelector(".message");
 const hiddenButton = document.querySelector(".play-again");
 const word = "magnolia"; 
@@ -19,3 +19,13 @@ const placeHolder = function(word){
     }
     mysteryWord.innerText = placeHolderLtters.join("");
 };
+
+placeHolder(word);
+
+guessButton.addEventListener("click", function (e){
+    e.preventDefault();
+    const ouputValue = textInput.value;
+    console.log(outputValue);
+    textInput.value = "";
+
+}); 
