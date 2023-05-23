@@ -29,3 +29,18 @@ guessButton.addEventListener("click", function (e){
     textInput.value = "";
 
 }); 
+
+input = function(){
+    const acceptedLetter = /[a-zA-Z]/
+    const guessInput = acceptedLetter.match()
+
+    if (guessInput) {
+        console.log("Enter a letter")
+    }
+
+    if (input !== /[a-zA-Z]/) {
+        console.log("Enter 1 letter at a time")
+    }
+
+
+}
