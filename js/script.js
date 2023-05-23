@@ -15,7 +15,7 @@ const placeHolder = function(word){
     const placeHolderLetters = [];
     for (const letter of word) {
         console.log(letter);
-        placeHolderLetters.push("●");
+        placeHolderLetters.push(" ● ");
     }
     mysteryWord.innerText = placeHolderLtters.join("");
 };
@@ -32,14 +32,14 @@ guessButton.addEventListener("click", function (e){
 
 input = function(){
     const acceptedLetter = /[a-zA-Z]/
-    const guessInput = acceptedLetter.match()
+    const guessInput = acceptedLetter.match("")
 
     if (guessInput) {
         console.log("Enter a letter")
     }
 
     if (input !== /[a-zA-Z]/) {
-        console.log("Enter 1 letter at a time")
+        alert("Enter 1 letter at a time")
     }
 
 
