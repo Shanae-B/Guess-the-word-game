@@ -40,8 +40,8 @@ guessButton.addEventListener("click", function (e) {
     textInput.value = "";
 });
 
-vInput = function (input) {
-    const acceptedLetter = /[a-zA-Z]/
+verifyInput = function (input) {
+    const acceptedLetter = /[a-zA-Z]/;
 
     if (input.length === 0) {
 
@@ -59,7 +59,7 @@ vInput = function (input) {
 
     const guessAttempt = function(outputValue){
         outputValue = outputValue.toUpperCase();
-        if (guessedLetters.include(outputValue)) {
+        if (guessedLetters.includes(outputValue)) {
             message.innerText = "Silly Rabbit, try again!";
         } else {
             guessedLetters.push(outputValue);
