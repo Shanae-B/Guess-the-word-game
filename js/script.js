@@ -1,5 +1,5 @@
 //Global Variables
-const guessedLetters = document.querySelector(".guessed-letters");
+const guessedLettersClass = document.querySelector(".guessed-letters");
 const guessButton = document.querySelector(".guess");
 const textInput = document.querySelector(".letter");
 const mysteryWord = document.querySelector(".word-in-progress");
@@ -9,6 +9,8 @@ const guessesSpan = document.querySelector(".remaining span");
 const message = document.querySelector(".message");
 const hiddenButton = document.querySelector(".play-again");
 const word = "magnolia";
+const guessedLetters = [];
+const win = document.querySelector(".win");
 
 //Placeholders for each letter
 const placeHolder = function (word) {
@@ -17,28 +19,28 @@ const placeHolder = function (word) {
         console.log(letter);
         placeHolderLetters.push("●");
     }
-    mysteryWord.innerText = placeHolderLtters.join("");
+    mysteryWord.innerText = placeHolderLetters.join("");
 };
 
 placeHolder(word);
 
+//Event listener for button
 guessButton.addEventListener("click", function (e) {
     e.preventDefault();
     message.innerText = "";
-    const ouputValue = textInput.value;
+    const outputValue = textInput.value;
     //console.log(outputValue);
-    const validGuess = validInput(guess);
+    const validGuess = verifyInput(outputValue);
 
     if (validGuess) {
+// Received a guess
+        makeGuess(outputValue);
 
-        makeGuess(guess);
-
-    }
-
+    } 
     textInput.value = "";
 });
 
-validInput = function (input) {
+vInput = function (input) {
     const acceptedLetter = /[a-zA-Z]/
 
     if (input.length === 0) {
@@ -52,14 +54,37 @@ validInput = function (input) {
         message.innerText = "Please enter a letter from A to Z";
     } else {
         return input;
+
     }
 
-const wordInProgress = function (guessedLetters) {
-wordInProgress(guessedLetters);
-}
+    const guessAttempt = function(outputValue){
+        outputValue = outputValue.toUpperCase();
+        if (guessedLetters.include(outputValue)) {
+            message.innerText = "Silly Rabbit, try again!";
+        } else {
+            guessedLetters.push(outputValue);
+            console.log(guessedLetters);
+        }
 
-const wordUpper = word.toUpperCase();
-const wordArray = wordUpper.split("");
-return wordArray;
+    };
 
-}
+
+    //Function to update word in progress
+    //const wordInProgress = function (guessedLettersClass) {
+       // wordInProgress(guessedLettersClass);
+
+
+       // const wordUpper = word.toUpperCase();
+       // const wordArray = wordUpper.split("");
+       // return wordArray;
+
+      //  const winningGuess = function () {
+      //      if (mysteryWord.match(word)) {
+      //          return win
+     //       }
+      //  };
+      //  return winnginGuess();
+
+
+    }
+//}
