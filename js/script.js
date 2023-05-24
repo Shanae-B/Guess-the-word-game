@@ -34,7 +34,7 @@ guessButton.addEventListener("click", function (e) {
 
     if (validGuess) {
 // Received a guess
-        makeGuess(outputValue);
+        guessAttempt(outputValue);
 
     } 
     textInput.value = "";
