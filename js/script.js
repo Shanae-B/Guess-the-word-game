@@ -70,13 +70,23 @@ const verifyInput = function (input) {
 
 
     //Function to update word in progress
-    //const wordInProgress = function (guessedLettersClass) {
-    // wordInProgress(guessedLettersClass);
+    const revealGuessedLetter = function () {
+        guessedLettersClass.innerHTML= "";
+        for (const letter of guessedLetters) {
 
+            const li = document.createElement("li");
+            li.innerText = letter;
+            guessedLettersClass.append(li);
 
-    // const wordUpper = word.toUpperCase();
-    // const wordArray = wordUpper.split("");
-    // return wordArray;
+        }
+
+        revealGuessedLetter();
+    };
+     //wordInProgress(guessedLettersClass);
+
+     //const wordUpper = word.toUpperCase();
+     //const wordArray = wordUpper.split("");
+     //return wordArray;
 
     //  const winningGuess = function () {
     //      if (mysteryWord.match(word)) {
@@ -84,7 +94,5 @@ const verifyInput = function (input) {
     //       }
     //  };
     //  return winnginGuess();
-
-
 }
 //}
