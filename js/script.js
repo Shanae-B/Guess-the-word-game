@@ -33,14 +33,24 @@ guessButton.addEventListener("click", function (e) {
     const validGuess = verifyInput(outputValue);
 
     if (validGuess) {
-// Received a guess
-        guessAttempt(outputValue);
+        // Received a guess
+        const makeGuess = function (outputValue) {
+            outputValue = outputValue.toUpperCase();
+            if (guessedLetters.includes(outputValue)) {
+                message.innerText = "Duplicate guess, try again!";
+            } else {
+                guessedLetters.push(outputValue);
+                console.log(guessedLetters);
+            }
 
-    } 
+        };
+        makeGuess(outputValue);
+
+    }
     textInput.value = "";
 });
 
-verifyInput = function (input) {
+const verifyInput = function (input) {
     const acceptedLetter = /[a-zA-Z]/;
 
     if (input.length === 0) {
@@ -55,36 +65,26 @@ verifyInput = function (input) {
     } else {
         return input;
 
-    }
-
-    const guessAttempt = function(outputValue){
-        outputValue = outputValue.toUpperCase();
-        if (guessedLetters.includes(outputValue)) {
-            message.innerText = "Silly Rabbit, try again!";
-        } else {
-            guessedLetters.push(outputValue);
-            console.log(guessedLetters);
-        }
-
     };
+
 
 
     //Function to update word in progress
     //const wordInProgress = function (guessedLettersClass) {
-       // wordInProgress(guessedLettersClass);
+    // wordInProgress(guessedLettersClass);
 
 
-       // const wordUpper = word.toUpperCase();
-       // const wordArray = wordUpper.split("");
-       // return wordArray;
+    // const wordUpper = word.toUpperCase();
+    // const wordArray = wordUpper.split("");
+    // return wordArray;
 
-      //  const winningGuess = function () {
-      //      if (mysteryWord.match(word)) {
-      //          return win
-     //       }
-      //  };
-      //  return winnginGuess();
+    //  const winningGuess = function () {
+    //      if (mysteryWord.match(word)) {
+    //          return win
+    //       }
+    //  };
+    //  return winnginGuess();
 
 
-    }
+}
 //}
