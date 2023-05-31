@@ -10,7 +10,7 @@ const message = document.querySelector(".message");
 const hiddenButton = document.querySelector(".play-again");
 const word = "magnolia";
 const guessedLetters = [];
-const win = document.querySelector(".win");
+//const win = document.querySelector(".win");
 
 //Placeholders for each letter
 const placeHolder = function (word) {
@@ -36,6 +36,7 @@ guessButton.addEventListener("click", function (e) {
         // Received a guess
         const makeGuess = function (outputValue) {
             outputValue = outputValue.toUpperCase();
+
             if (guessedLetters.includes(outputValue)) {
                 message.innerText = "Duplicate guess, try again!";
             } else {
@@ -80,8 +81,24 @@ const verifyInput = function (input) {
 
         }
 
-        revealGuessedLetter();
+       // revealGuessedLetter();
     };
+
+    const updateMysteryWord = function (guessedLetters){
+        const wordUpper = word.toUpperCase();
+        const wordArray = wordUpper.split("");
+        const revealWord = [];
+
+       for(const letter of wordArray) {
+        if (guessedLetters.includes(letter)) {
+            revealWord.push(letter.toUpperCase());
+        } else {
+            revealWord.push("●")
+        }
+       }
+
+    };
+
      //wordInProgress(guessedLettersClass);
 
      //const wordUpper = word.toUpperCase();
