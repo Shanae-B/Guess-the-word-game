@@ -32,25 +32,17 @@ guessButton.addEventListener("click", function (e) {
     //console.log(outputValue);
     const validGuess = verifyInput(outputValue);
 
-    if (validGuess) {
-        // Received a guess
-        const makeGuess = function (outputValue) {
-            outputValue = outputValue.toUpperCase();
 
-            if (guessedLetters.includes(outputValue)) {
-                message.innerText = "Duplicate guess, try again!";
-            } else {
-                guessedLetters.push(outputValue);
-                console.log(guessedLetters);
-            }
-
-        };
+    if (validGuess){
         makeGuess(outputValue);
-
     }
+
     textInput.value = "";
+    verifyInput(input);
 });
 
+
+//check player's input
 const verifyInput = function (input) {
     const acceptedLetter = /[a-zA-Z]/;
 
@@ -65,8 +57,18 @@ const verifyInput = function (input) {
         message.innerText = "Please enter a letter from A to Z";
     } else {
         return input;
-
     };
+
+    const makeGuess = function(letter) {
+        letter = letter.toUpperCase();
+        if (guessedLetters.includes(outputValue)) {
+            message.innerText = "Duplicate guess, try again!";
+        } else {
+            guessedLetters.push(outputValue);
+            console.log(guessedLetters);
+        }
+
+    }
 
 
 
