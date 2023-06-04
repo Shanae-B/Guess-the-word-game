@@ -34,14 +34,60 @@ guessButton.addEventListener("click", function (e) {
 
 
     if (validGuess){
-        makeGuess(outputValue);
+        makeGuess(outputValue)
     }
 
     textInput.value = "";
-    verifyInput(input);
+    //verifyInput(input);
 });
 
+const makeGuess = function(outputValue) {
+    outputValue = outputValue.toUpperCase();
+    if (guessedLetters.includes(outputValue)) {
+        message.innerText = "Duplicate guess, try again!";
+    } else {
+        guessedLetters.push(outputValue);
+        console.log(guessedLetters);
+    }
+    revealGuessedLetter();
+    updateMysteryWord(guessedLetters);
+}
 
+const updateMysteryWord = function (guessedLetters){
+    const wordUpper = word.toUpperCase();
+    const wordArray = wordUpper.split("");
+    const revealWord = [];
+
+   for(const letter of wordArray) {
+    if (guessedLetters.includes(letter)) {
+        revealWord.push(letter.toUpperCase());
+    } else {
+        revealWord.push("●")
+    }
+   }
+
+   mysteryWord.innerText = revealWord.join("");
+   winningGuess()
+};
+
+    //Function to update word in progress
+    const revealGuessedLetter = function () {
+        guessedLettersClass.innerHTML= "";
+        for (const letter of guessedLetters) {
+
+            const li = document.createElement("li");
+            li.innerText = letter;
+            guessedLettersClass.append(li);
+
+        }
+    };
+
+    const winningGuess = function () {
+        if (word.toUpperCase()===mysteryWord.innerText) {
+             message.classList.add("win")
+          message.innerHTML = `<p class="highlight">You guessed correct the word! Congrats!</p>`;   
+        }
+     };
 //check player's input
 const verifyInput = function (input) {
     const acceptedLetter = /[a-zA-Z]/;
@@ -59,47 +105,7 @@ const verifyInput = function (input) {
         return input;
     };
 
-    const makeGuess = function(letter) {
-        letter = letter.toUpperCase();
-        if (guessedLetters.includes(outputValue)) {
-            message.innerText = "Duplicate guess, try again!";
-        } else {
-            guessedLetters.push(outputValue);
-            console.log(guessedLetters);
-        }
 
-    }
-
-
-
-    //Function to update word in progress
-    const revealGuessedLetter = function () {
-        guessedLettersClass.innerHTML= "";
-        for (const letter of guessedLetters) {
-
-            const li = document.createElement("li");
-            li.innerText = letter;
-            guessedLettersClass.append(li);
-
-        }
-
-       // revealGuessedLetter();
-    };
-
-    const updateMysteryWord = function (guessedLetters){
-        const wordUpper = word.toUpperCase();
-        const wordArray = wordUpper.split("");
-        const revealWord = [];
-
-       for(const letter of wordArray) {
-        if (guessedLetters.includes(letter)) {
-            revealWord.push(letter.toUpperCase());
-        } else {
-            revealWord.push("●")
-        }
-       }
-
-    };
 
      //wordInProgress(guessedLettersClass);
 
